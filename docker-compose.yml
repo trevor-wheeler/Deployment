@@ -1,0 +1,86 @@
+version: '3'
+services:
+
+# Proxy
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./proxy
+    ports:
+      - "80:80"
+    volumes:
+      - static:/static
+    depends_on:
+      - portfolio
+      - midi-piano
+
+# React
+
+  portfolio:
+    container_name: portfolio
+    build:
+      context: ./apps/portfolio/front
+    ports:
+      - "3000:3000"
+    volumes:
+      - static:/static
+    depends_on:
+      - portfolio-express
+
+# Django
+
+  midi-piano:
+    container_name: midi-piano
+    restart: always
+    build:
+      context: ./apps/midi-piano
+    ports:
+      - "8000:8000"
+    volumes:
+      - static:/static
+    environment:
+      - DEBUG=${DEBUG}
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_HOST=postgres-db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DOMAIN_1=${DOMAIN_1}
+      - DOMAIN_2=${DOMAIN_2}
+    #depends_on:
+    #  - postgres-db
+
+# Backend servers
+
+  portfolio-express:
+    container_name: portfolio-express
+    restart: always
+    build:
+      context: ./apps/portfolio/back
+    ports:
+      - "5000:5000"
+    environment:
+      - INBOX=${INBOX}
+      - AUTH_USER=${AUTH_USER}
+      - AUTH_PASS=${AUTH_PASS}
+
+# Databases
+
+  postgres-db:
+    container_name: postgres-db
+    restart: always
+    image: postgres:13-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+
+# Volumes
+
+volumes:
+  static:
+  postgres-data:
