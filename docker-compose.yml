@@ -65,6 +65,9 @@ services:
       - INBOX=${INBOX}
       - AUTH_USER=${AUTH_USER}
       - AUTH_PASS=${AUTH_PASS}
+      - DOMAIN_1=${DOMAIN_1}
+      - DOMAIN_2=${DOMAIN_2}
+      - IPV4=${IPV4}
 
 # Databases
 

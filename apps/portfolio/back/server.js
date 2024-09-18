@@ -11,7 +11,7 @@ const AUTH_PASS = process.env.AUTH_PASS;
 const INBOX = process.env.INBOX;
 
 const corsOptions = {
-    origin: ['http://localhost:5173'],
+    origin: [process.env.DOMAIN_1, process.env.DOMAIN_2, process.env.IPV4],
 };
 
 // Middleware

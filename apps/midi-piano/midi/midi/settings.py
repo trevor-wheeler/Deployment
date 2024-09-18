@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 #DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv('DOMAIN_1'), os.getenv('DOMAIN_2'), os.getenv('IPV4')]
+ALLOWED_HOSTS = ['trevorwheeler.com', 'www.trevorwheeler.com']
 
 
 # Application definition
