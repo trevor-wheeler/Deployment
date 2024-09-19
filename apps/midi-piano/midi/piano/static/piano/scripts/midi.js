@@ -35,7 +35,7 @@ function main() {
     const keys = document.querySelectorAll('.key:not(.hidden)');
     const mobileKeys = document.querySelectorAll('.mobile-key:not(.hidden)')
 
-    const silentAudio = docuement.getInputById('silent');
+    const silentAudio = document.getElementById('silent');
     const handles = document.querySelectorAll('.knob-handle');
     const savePresetBtn = document.getElementById('save-preset-btn');
     const clearBtn = document.getElementById('clear-btn');

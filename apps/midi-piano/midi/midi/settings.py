@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 #DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['trevorwheeler.com', 'www.trevorwheeler.com']
+ALLOWED_HOSTS = ['trevorwheeler.com', 'www.trevorwheeler.com', 'https://trevorwheeler.com', 'https://www.trevorwheeler.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://trevorwheeler.com', 'https://www.trevorwheeler.com']
 
