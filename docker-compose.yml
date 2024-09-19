@@ -49,8 +49,8 @@ services:
       - DB_PASS=${DB_PASS}
       - DOMAIN_1=${DOMAIN_1}
       - DOMAIN_2=${DOMAIN_2}
-    #depends_on:
-    #  - postgres-db
+    depends_on:
+      - postgres-db
 
 # Backend servers
 
