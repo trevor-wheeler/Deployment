@@ -11,12 +11,12 @@ var knobMouseDown = false;
 var x;
 var y;
 
-function isMobile() {
-    return /Mobi|Android/i.test(navigator.userAgent);
+function isChrome() {
+    return /Chrome/i.test(navigator.userAgent) && !/Edge|Edg/i.test(navigator.userAgent);
 }
 
 function main() {
-    if (!isMobile()) {
+    if (isChrome()) {
         WebMidi.enable().then(onEnabled).catch(err => alert(err));
     }
     

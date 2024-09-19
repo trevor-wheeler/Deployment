@@ -56,11 +56,11 @@
   {% block body %}
   {% endblock %}
   <script>
-    function isMobile() {
-      return /Mobi|Android/i.test(navigator.userAgent);
+    function isChrome() {
+      return /Chrome/i.test(navigator.userAgent) && !/Edge|Edg/i.test(navigator.userAgent);
     }
-  
-    if (!isMobile()) {
+
+    if (isChrome()) {
       var script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/webmidi@next/dist/iife/webmidi.iife.js';
       document.head.appendChild(script);
