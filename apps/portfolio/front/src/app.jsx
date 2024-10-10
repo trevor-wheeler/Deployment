@@ -1,4 +1,5 @@
 import pfp from '/pfp.png';
+import resume from '/resume.pdf';
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useLocation, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
 import { annotate, annotationGroup } from 'rough-notation';
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<Resume />} />
         </Routes>
       </main>
     </pageDataContext.Provider>
@@ -44,6 +46,7 @@ function Nav() {
         <li><NavLink to="/">About</NavLink></li>
         <li><NavLink to="/projects">Projects</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
+        <li><NavLink to="/resume" target="_blank">Resume</NavLink></li>
       </ul>
       <button className="accent theme-btn gradient" onClick={() => updateTheme(page, nav)}><i className="bi bi-moon-stars-fill"></i></button>
     </nav>
@@ -113,7 +116,7 @@ function About() {
         </div>
       </div>
       <h1>Trevor Wheeler</h1>
-      <p className="text" ref={paragraph}>I'm a <span className="highlight">full-stack developer</span> located in the Greater <span className="highlight">Seattle</span> Area<span className='comma'>,</span> most skilled in <span className="highlight">Python and JavaScript<span className='comma'>,</span></span> with a foundational <span className="highlight">background in C.</span> In addition to programming<span className='comma'>,</span> I have <span className="highlight">experience in Linux</span> and managing web servers with <span className="highlight">Docker and AWS.</span> My goal as a developer is to build responsive<span className='comma'>,</span> user-friendly web applications and continually expand my skill set with the <span className="highlight">newest technology.</span> Outside of programming<span className='comma'>,</span> I have interests in music production and personal finance.</p>
+      <p className="text" ref={paragraph}>I'm a <span className="highlight">full-stack developer</span> located in the Greater <span className="highlight">Seattle</span> Area<span className='comma'>,</span> most skilled in <span className="highlight">Python and JavaScript<span className='comma'>,</span></span> with a foundational <span className="highlight">background in C.</span> In addition to programming<span className='comma'>,</span> I have <span className="highlight">experience with Linux</span> and managing web servers with <span className="highlight">Docker-Compose<span className='comma'>,</span></span> <span className="highlight">Nginx<span className='comma'>,</span></span> and <span className="highlight">AWS.</span> My goal as a developer is to build responsive<span className='comma'>,</span> user-friendly web applications and continually expand my skill set with the <span className="highlight">newest technology.</span> Outside of programming<span className='comma'>,</span> I have interests in music production and personal finance.</p>
       <h1>Featured Projects</h1>
       <div ref={page} className="projects">
         <div className="accent project">
@@ -146,6 +149,7 @@ function About() {
             <span className="tag">Javascript</span>
             <span className="tag">React</span>
             <span className="tag">Docker</span>
+            <span className="tag">Nginx</span>
             <span className="tag">AWS</span>
           </div>
           <div className="project-links">
@@ -184,6 +188,20 @@ function checkDevice() {
   if (!isChrome()) {
     alert('Warning: MIDI support only available in Chrome\n\nTo enable MIDI functionality please change your browser.');
   }
+}
+
+// Resume
+function Resume() {
+  useEffect(() => {
+    document.title = 'Resume';
+  });
+
+  const {page} = useContext(pageDataContext);
+  return (
+    <div ref={page}>
+      <iframe id="resume" src={resume} frameborder="0"></iframe>
+    </div>
+  );
 }
 
 // Contact
@@ -289,10 +307,11 @@ function Projects() {
             <span className="tag">Javascript</span>
             <span className="tag">React</span>
             <span className="tag">Docker</span>
+            <span className="tag">Nginx</span>
             <span className="tag">AWS</span>
           </div>
           <div className="project-links">
-            <a href="https://github.com/trevor-wheeler/Chrome-Extension" target="_blank"><i className="bi bi-github"></i></a>
+            <a href="https://github.com/trevor-wheeler/Portfolio" target="_blank"><i className="bi bi-github"></i></a>
             <a href="https://www.youtube.com/watch?v=0" target="_blank"><i className="bi bi-youtube"></i></a>
             <a href="/" target="_blank"><i className="bi bi-link-45deg"></i></a>
           </div>
@@ -308,7 +327,7 @@ function Projects() {
             <span className="tag">Manifest</span>
           </div>
           <div className="project-links">
-            <a href="https://github.com/trevor-wheeler/Portfolio" target="_blank"><i className="bi bi-github"></i></a>
+            <a href="https://github.com/trevor-wheeler/Chrome-Extension" target="_blank"><i className="bi bi-github"></i></a>
             <a href="https://www.youtube.com/watch?v=ej5fKXtoeTA" target="_blank"><i className="bi bi-youtube"></i></a>
             <a href="https://chromewebstore.google.com/detail/short-form-content-remova/bbobcnmcegmkheaimcepkmcmnaaomagn" target="_blank"><i className="bi bi-link-45deg"></i></a>
           </div>
