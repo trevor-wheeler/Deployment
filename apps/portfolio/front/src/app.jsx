@@ -1,5 +1,4 @@
 import pfp from '/pfp.png';
-import resume from '/resume.pdf';
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useLocation, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
 import { annotate, annotationGroup } from 'rough-notation';
@@ -28,7 +27,6 @@ export default function App() {
           <Route path="/" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/resume" element={<Resume />} />
         </Routes>
       </main>
     </pageDataContext.Provider>
@@ -46,7 +44,7 @@ function Nav() {
         <li><NavLink to="/">About</NavLink></li>
         <li><NavLink to="/projects">Projects</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
-        <li><NavLink to="/resume" target="_blank">Resume</NavLink></li>
+        <li><a href="/resume.pdf" target="_blank">Resume</a></li>
       </ul>
       <button className="accent theme-btn gradient" onClick={() => updateTheme(page, nav)}><i className="bi bi-moon-stars-fill"></i></button>
     </nav>
@@ -188,20 +186,6 @@ function checkDevice() {
   if (!isChrome()) {
     alert('Warning: MIDI support only available in Chrome\n\nTo enable MIDI functionality please change your browser.');
   }
-}
-
-// Resume
-function Resume() {
-  useEffect(() => {
-    document.title = 'Resume';
-  });
-
-  const {page} = useContext(pageDataContext);
-  return (
-    <div ref={page}>
-      <iframe id="resume" src={resume} frameborder="0"></iframe>
-    </div>
-  );
 }
 
 // Contact
