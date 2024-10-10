@@ -446,3 +446,10 @@ a.active {
     }
 }
 
+@media (max-width: 400px) {
+    .nav-routes {
+        
+        gap: 15px;
+        font-weight: 400
+    }
+}
